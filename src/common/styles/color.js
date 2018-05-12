@@ -5,7 +5,7 @@ let color ={
     // primaryColor:        '#2196F3',
     primaryColor:        '#09A3DC',
     primaryColorLight:  '#BBDEFB',
-    primaryColorText:   '#FFFFFF',
+    primaryColorText:   '#FEFEFE',
     accentColor:         '#9E9E9E',
     primaryTextColor:   '#212121',
     secondaryTextColor: '#757575',

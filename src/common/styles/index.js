@@ -7,6 +7,28 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    tabButtomView:{
+        margin: 0,
+        display:'flex',
+        flex:1,
+        justifyContent: 'space-around',
+        alignItems: 'stretch',
+        alignContent:'space-around'
+
+    },
+    novelCard:{
+        display:'flex',
+        justifyContent: 'space-around',
+        alignItems: 'stretch',
+        alignContent:'space-around',
+        height:px2dp(20),
+        flexBasis:px2dp(100),
+    },
+    novelCardText:{
+        padding: 10,
+        fontSize: 18,
+        height: 44,
+    },
     labelStyle:{
         fontSize: px2dp(20),
     },

@@ -10,9 +10,7 @@ export const fetchTotalRank = (apiUrl) => {
                 return response.json()
             })
             .then((res)=>{
-                // const resObj=JSON.parse(res);
                 const resObj=res;
-                console.log(resObj);
                 if(resObj.success){
                     const rankData=resObj.data.novelArr;
                     dispatch({
