@@ -8,13 +8,15 @@ export default class NovelCard extends Component {
         console.log(this.props.imgUrl);
         return(
             <View style={styles.card}>
-                <Image style={styles.novelImg}
-                       source={{uri:this.props.imgUrl}}/>
+                <View style={styles.imgView}>
+                    <Image style={styles.img}  source={{uri:this.props.imgUrl}}/>
+                </View>
                 <View style={styles.infoView}>
                     <Text style={styles.title}>{this.props.novelName}</Text>
-                    <Text style={styles.title}>{this.props.novelName}</Text>
-                    <Text style={styles.title}>{this.props.novelName}</Text>
-                    <Text style={styles.title}>{this.props.novelName}</Text>
+                    <Text style={styles.text}>作者：{this.props.author}</Text>
+                    <Text style={styles.text}>字数：{this.props.wordCount}</Text>
+                    <Text style={styles.text}>最后更新：{this.props.updateTime}</Text>
+                    <Text style={styles.text}>来自：{this.props.beFrom}</Text>
                 </View>
             </View>
         )
@@ -28,29 +30,37 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:'row',
         flexWrap:'nowrap',
+        alignItems:'stretch',
+        height:px2dp(152),
+        borderBottomWidth:px2dp(1),
+        borderStyle:'solid',
+        borderColor:color.dividerColor,
+    },
+    imgView:{
+        width:px2dp(90),
+        height:px2dp(120),
+        flexGrow:1,
+        flexShrink:1,
+    },
+    img:{
+        flex:1,
+        width:px2dp(90),
         height:px2dp(120),
     },
-    item: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
-    },
-    novelImg:{
-        width:px2dp(66),
-        height:px2dp(88),
-        flexGrow:3,
-    },
     infoView:{
-        flexGrow:7,
+        flexGrow:4,
+        flexShrink:4,
+        justifyContent:'space-between',
         paddingLeft:px2dp(8),
-        height:px2dp(100),
-        width:px2dp(375),
+        height:px2dp(120),
+        width:px2dp(250),
+
     },
     title:{
-        fontSize:px2dp(22),
+        fontSize:px2dp(20),
         color:color.primaryTextColor,
-        height:px2dp(24),
-        lineHeight:px2dp(24),
+        height:px2dp(22),
+        lineHeight:px2dp(22),
     },
     text:{
         fontSize:px2dp(16),

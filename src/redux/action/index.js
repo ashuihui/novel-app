@@ -1,7 +1,9 @@
 
 import type from './type';
+import host from '../../util/host';
 
-export const fetchTotalRank = (apiUrl) => {
+export const fetchTotalRank = (num) => {
+    let apiUrl= host.totalRankHost(num);
     return dispatch => {
         fetch( apiUrl , {
             method: 'GET',
@@ -19,13 +21,7 @@ export const fetchTotalRank = (apiUrl) => {
                     })
                 }else {
                     alert('date err:'+resObj);
-                    // const msg=resp.msg;
-                    // dispatch({
-                    //     type:type.err,
-                    //     msg
-                    // })
                 }
-
             })
         .catch(function(err) {
             alert('no get :'+ err)
