@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import {connect} from "react-redux";
 import {fetchBookShelf} from "../../redux/action";
 
-import NovelCardList from '../../common/component/NovelCardList';
+import NovelCardList from '../../common/component/NovelCardListNofresh';
 import styles from './styles/index';
 import Searcher from './component/Searcher';
 
