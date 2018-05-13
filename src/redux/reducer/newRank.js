@@ -1,9 +1,9 @@
 import type from '../action/type';
 
 
-const totalRank = (state = [], action) => {
+const newRank = (state = [], action) => {
     switch (action.type) {
-        case type.getTotalRank:
+        case type.getNewRank:
             const result = [
                 ...state,
                 ...action.novelData
@@ -14,5 +14,5 @@ const totalRank = (state = [], action) => {
     }
 };
 
-export default totalRank;
+export default newRank;
 

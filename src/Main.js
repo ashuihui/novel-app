@@ -1,17 +1,22 @@
 //路由
 import React from 'react';
-import {createBottomTabNavigator} from 'react-navigation';
+import {Button,Image} from 'react-native';
+import {createBottomTabNavigator,createStackNavigator} from 'react-navigation';
 import BookShelf from './pages/bookShelf/BookShelf';
-import Rank from './pages/rank/Rank';
+import Rank from './pages/rank/RankContainer';
 import News from './pages/news/News';
 import Me from './pages/me/Me';
+import Searcher from './pages/searcher/Searcher';
+import Recommendation from './pages/recommendation/Recommendation';
+import Read from './pages/read/Read';
 
 import color from './common/styles/color';
 import styles from './common/styles/index';
 import TabBottomIcon from './common/component/TabBottomIcon';
 import TabBottomLabel from './common/component/TabLabel';
+import HeaderTop from './common/component/HeaderTop';
 
-export  default  createBottomTabNavigator(
+const  BottomNav= createBottomTabNavigator(
     {
         BookShelf:{
             screen: BookShelf,
@@ -106,5 +111,48 @@ export  default  createBottomTabNavigator(
 );
 
 
+export  default createStackNavigator(
+    {
+        Main:{
+            screen:BottomNav,
+            navigationOptions: ({ navigation }) => ({
+                header:null,
+            }),
+        },
+        Searcher:{
+            screen:Searcher,
+            navigationOptions: ({ navigation }) => ({
+                title:'搜索',
+                gesturesEnabled:true,
+                headerStyle:styles.headerTop,
+                headerTitleStyle:styles.headerTitle,
+                headerTintColor:color.primaryColorText
+            }),
+        },
+        Recommendation:{
+            screen:Recommendation,
+            navigationOptions: ({ navigation }) => ({
+                title:'推荐',
+                gesturesEnabled:true,
+                headerStyle:styles.headerTop,
+                headerTitleStyle:styles.headerTitle,
+                headerTintColor:color.primaryColorText
+            }),
+        },
+        Read:{
+            screen:Read,
+            navigationOptions: ({ navigation }) => ({
+                title:'阅读',
+                gesturesEnabled:true,
+                headerStyle:styles.headerTop,
+                headerTitleStyle:styles.headerTitle,
+                headerTintColor:color.primaryColorText
+            }),
+        },
+    },
+    {
+        headerMode:'screen',
+    }
+);
 
 

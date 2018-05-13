@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { Text, View } from 'react-native';
-import styles from '../../../common/styles/index';
 
-class TotalRank extends Component{
-    render() {
-        return (
-            <View style={styles.index}>
-                <Text>news!</Text>
-            </View>
-        );
-    }
-}
+import React from 'react'
+import { connect } from 'react-redux'
+import {fetchNewRank} from "../../../redux/action";
+import NovelCardList from '../../../common/component/NovelCardList';
 
-export default TotalRank;
+const RankContainer = props => <NovelCardList  {...props}   cardType={'toRead'} />;
+
+const mapStateToProps = state => ({
+    novelData: state.newRank
+});
+const getData=fetchNewRank;
+export default connect(mapStateToProps, {
+    getData,
+})(RankContainer)

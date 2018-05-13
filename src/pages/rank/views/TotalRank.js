@@ -1,36 +1,15 @@
 
-import React, { Component } from 'react'
-import { Text, ScrollView,View ,FlatList} from 'react-native';
+import React from 'react'
 import { connect } from 'react-redux'
-import styles from '../../../common/styles/index';
-import NovelCard from '../../../common/component/NovelCard';
 import {fetchTotalRank} from "../../../redux/action";
+import NovelCardList from '../../../common/component/NovelCardList';
 
-class Rank extends Component{
-    render() {
-        const {totalRank} = this.props;
-        const novelList = totalRank.map(
-            (novel,index)=>{
-                novel.key=JSON.stringify(novel.nid);
-                return novel;
-            }
-        );
-        console.log(novelList);
-        return (
-            <View style={styles.tabButtomView}>
-                <FlatList
-                    data={novelList}
-                    renderItem={({item}) => <NovelCard {...item}/>}
-                    />
-            </View>
-        );
-    }
-}
-const RankContainer = props => <Rank  {...props} />
+const RankContainer = props => <NovelCardList  {...props}  cardType={'toRead'} />
 
 const mapStateToProps = state => ({
-    totalRank: state.totalRank
+    novelData: state.totalRank
 });
+const getData=fetchTotalRank;
 export default connect(mapStateToProps, {
-        fetchTotalRank,
+    getData,
 })(RankContainer)

@@ -6,6 +6,10 @@ const host ={
         let me = this;
         return `${me.hostPort}/rank?num=${num}`;
     },
+    newRankHost:function (num) {
+        let me = this;
+        return `${me.hostPort}/rank?num=${num}`;
+    },
     searcherHost:function (word) {
         let me = this;
         return `${me.hostPort}/searcher?word=${word}`;

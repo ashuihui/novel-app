@@ -1,15 +1,27 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native';
-import styles from '../../common/styles/index';
+import { View } from 'react-native';
+import {connect} from "react-redux";
+import {fetchBookShelf} from "../../redux/action";
 
-class Rank extends Component{
+import NovelCardList from '../../common/component/NovelCardList';
+import styles from './styles/index';
+import Searcher from './component/Searcher';
+
+class BookShelf extends Component{
     render() {
         return (
-            <View style={styles.index}>
-                <Text>BookShelf!</Text>
+            <View style={styles.index} >
+                <Searcher {...this.props}/>
+                <NovelCardList  {...this.props} />
             </View>
         );
     }
 }
 
-export default Rank;
+const mapStateToProps = state => ({
+    novelData: state.bookShelf
+});
+const getData=fetchBookShelf;
+export default connect(mapStateToProps, {
+    getData,
+})(BookShelf)

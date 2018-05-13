@@ -43,8 +43,23 @@ const styles = StyleSheet.create({
     lineTab:{
         backgroundColor:color.dividerColor,
         borderColor:color.dividerColor,
-    }
-
+    },
+    headerTop:{
+        height:px2dp(50),
+        backgroundColor: color.primaryColor,
+    },
+    headerTitle:{
+        flex:1,
+        color:color.primaryColorText,
+        lineHeight:px2dp(50),
+        fontSize:px2dp(20),
+        fontWeight:'bold'
+    },
+    headerIcon:{
+        color:color.primaryColorText,
+        width:px2dp(50),
+        height:px2dp(50),
+    },
 });
 
 module.exports = styles;

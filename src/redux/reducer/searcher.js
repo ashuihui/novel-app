@@ -1,11 +1,10 @@
 import type from '../action/type';
 
 
-const totalRank = (state = [], action) => {
+const searcher = (state = [], action) => {
     switch (action.type) {
-        case type.getTotalRank:
+        case type.getSearcher:
             const result = [
-                ...state,
                 ...action.novelData
             ];
             return result;
@@ -14,5 +13,5 @@ const totalRank = (state = [], action) => {
     }
 };
 
-export default totalRank;
+export default searcher;
 

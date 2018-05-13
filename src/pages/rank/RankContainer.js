@@ -9,7 +9,7 @@ import TabLabel from '../../common/component/TabLabel';
 
 export  default  createMaterialTopTabNavigator(
     {
-        total:{
+        TotalRank:{
             screen: TotalRank,
             navigationOptions: ({ navigation }) => ({
                 tabBarLabel:  ({focused,tintColor}) => (
@@ -22,7 +22,7 @@ export  default  createMaterialTopTabNavigator(
                 ),
             }),
         },
-        new:{
+        NewRank:{
             screen: NewRank,
             navigationOptions: ({ navigation }) => ({
                 tabBarLabel:({focused,tintColor}) => (
