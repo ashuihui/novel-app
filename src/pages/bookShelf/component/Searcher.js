@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text,TextInput, View,Button,Image } from 'react-native';
+import { TextInput, View,Image } from 'react-native';
 import styles from '../styles/searcher';
 
 class Searcher extends Component{
@@ -28,11 +28,12 @@ class Searcher extends Component{
                     onChangeText={this.handleChange}
                     onSubmitEditing={this.submitCmt}
                 />
-                <Image
-                    style={styles.img}
-                    source={require('../img/searcher.png')}
-                />
-
+                <View style={styles.imgView}>
+                    <Image
+                        style={styles.img}
+                        source={require('../img/searcher.png')}
+                    />
+                </View>
             </View>
         );
     }

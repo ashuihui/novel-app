@@ -18,6 +18,14 @@ const host ={
         let me = this;
         return `${me.hostPort}/novel?nid=${num}`;
     },
+    userLoginHost:function (user) {
+        let me = this;
+        return `${me.hostPort}/user/login?userName=${user.userName}&password=${user.password}`;
+    },
+    userRegisteredHost:function (user) {
+        let me = this;
+        return `${me.hostPort}/user/registered?userName=${user.userName}&password=${user.password}&testCode=${user.testCode}`;
+    },
 };
 module.exports =host;
 

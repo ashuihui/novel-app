@@ -9,7 +9,7 @@ export default class TabLabel extends Component {
                 style={ {
                     color:this.props.tintColor,
                     textAlign:'center',
-                    fontSize: this.props.type!=='1'? px2dp(16):px2dp(20),
+                    fontSize: this.props.type!=='1'? px2dp(16):px2dp(20),//type top :1=> 20px  bootom :0 =>16px
                     fontWeight:this.props.focused ? 'bold':'normal'
                 }}>
                 {this.props.title}

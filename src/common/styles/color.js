@@ -20,10 +20,11 @@ let tow ={
     primaryColorDark:   '#0097A7',
     primaryColor:        '#00BCD4',
     primaryColorLight:  '#B2EBF2',
-    primaryColorText:   '#FFFFFF',
+    primaryColorText:   '#FEFEFE',
     accentColor:         '#FF4081',
     primaryTextColor:   '#212121',
     secondaryTextColor: '#727272',
     dividerColor:        '#B6B6B6',
-}
+    backprimary:       '#ECEDF1',
+};
 export default tow;

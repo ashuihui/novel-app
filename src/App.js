@@ -26,5 +26,5 @@ class App extends Component {
 export default connect(null, {
     fetchTotalRank,
     fetchNewRank,
-    fetchBookShelf
+    fetchBookShelf,
 })(App)

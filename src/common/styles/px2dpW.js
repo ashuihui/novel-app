@@ -10,9 +10,9 @@ const deviceHeightDpy = Dimensions.get('window').height;
 const uiHeightPx = 375;
 const uiHeightPy = 812;
 
-export default function px2dp(uiElementPx) {
+export default function px2dpW(uiElementPx) {
     //console.log(deviceWidthDp);
     //console.log(deviceHeightDp);
-    return uiElementPx *  deviceHeightDpy / uiHeightPy;
+    return uiElementPx *  deviceWidthDpx / uiHeightPx;
 }
 

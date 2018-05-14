@@ -132,5 +132,58 @@ export const fetchRecommendation = (nid) => {
             })
     }
 };
+export const login = (user) => {
+    let apiUrl= host.userLoginHost(user);
+    return dispatch => {
+        fetch( apiUrl , {
+            method: 'GET',
+        })
+            .then((response) =>{
+                return response.json()
+            })
+            .then((res)=>{
+                const resObj=res;
+                if(resObj.success){
+                    const loginData=resObj.data;
+                    dispatch({
+                        type: type.login,
+                        loginData
+                    })
+                }else {
+                    alert('date err:'+resObj);
+                }
+            })
+            .catch(function(err) {
+                alert('no get :'+ err)
+            })
+    }
+};
+export const registered = (user) => {
+    let apiUrl= host.userRegisteredHost(user);
+    return dispatch => {
+        fetch( apiUrl , {
+            method: 'GET',
+        })
+            .then((response) =>{
+                return response.json()
+            })
+            .then((res)=>{
+                const resObj=res;
+                if(resObj.success){
+                    const regData=resObj.data;
+                    dispatch({
+                        type: type.registered,
+                        regData
+                    })
+                }else {
+                    alert('date err:'+resObj);
+                }
+            })
+            .catch(function(err) {
+                alert('no get :'+ err)
+            })
+    }
+};
+
 
 

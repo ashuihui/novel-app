@@ -4,13 +4,15 @@ import newRank from'./newRank'
 import bookShelf from'./bookShelf'
 import searcher from'./searcher'
 import recommendation from'./recommendation'
+import user from'./user'
 
 const rootReducer = combineReducers({
     totalRank,
     newRank,
     bookShelf,
     searcher,
-    recommendation
+    recommendation,
+    user
 });
 
 export default rootReducer
