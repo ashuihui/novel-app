@@ -7,6 +7,7 @@ import {
     fetchTotalRank ,
     fetchNewRank,
     fetchBookShelf,
+    isLogin,
 } from './redux/action';
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
         this.props.fetchTotalRank(0);
         this.props.fetchNewRank(10);
         this.props.fetchBookShelf(20);
+        this.props.isLogin();
     }
 
     render() {
@@ -27,4 +29,5 @@ export default connect(null, {
     fetchTotalRank,
     fetchNewRank,
     fetchBookShelf,
+    isLogin,
 })(App)

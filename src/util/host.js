@@ -26,6 +26,10 @@ const host ={
         let me = this;
         return `${me.hostPort}/user/registered?userName=${user.userName}&password=${user.password}&testCode=${user.testCode}`;
     },
+    userIsLogin:function () {
+        let me = this;
+        return `${me.hostPort}/user/isLogin`;
+    }
 };
 module.exports =host;
 

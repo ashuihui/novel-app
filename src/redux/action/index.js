@@ -59,6 +59,7 @@ export const fetchBookShelf = (num) => {
     return dispatch => {
         fetch( apiUrl , {
             method: 'GET',
+            credentials: 'include'
         })
             .then((response) =>{
                 return response.json()
@@ -177,6 +178,37 @@ export const registered = (user) => {
                     })
                 }else {
                     alert('date err:'+resObj);
+                }
+            })
+            .catch(function(err) {
+                alert('no get :'+ err)
+            })
+    }
+};
+export const quit = (user) => {
+    return {
+        type: type.quit,
+        user
+    }
+};
+export const isLogin = () => {
+    let apiUrl= host.userIsLogin();
+    return dispatch => {
+        fetch( apiUrl , {
+            method: 'GET',
+            credentials: 'include'
+        })
+            .then((response) =>{
+                return response.json()
+            })
+            .then((res)=>{
+                const resObj=res;
+                if(resObj.success){
+                    const isLoginData=resObj.data;
+                    dispatch({
+                        type: type.isLogin,
+                        isLoginData
+                    })
                 }
             })
             .catch(function(err) {

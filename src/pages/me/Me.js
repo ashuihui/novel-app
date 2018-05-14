@@ -65,6 +65,8 @@ export  default createStackNavigator(
         },
     },
     {
+        initialRouteName:'My',
         headerMode:'screen',
+
     }
 );

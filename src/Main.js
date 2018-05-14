@@ -1,6 +1,5 @@
 //路由
 import React from 'react';
-import {Button,Image} from 'react-native';
 import {createBottomTabNavigator,createStackNavigator} from 'react-navigation';
 import BookShelf from './pages/bookShelf/BookShelf';
 import Rank from './pages/rank/RankContainer';
@@ -14,7 +13,6 @@ import color from './common/styles/color';
 import styles from './common/styles/index';
 import TabBottomIcon from './common/component/TabBottomIcon';
 import TabBottomLabel from './common/component/TabLabel';
-import HeaderTop from './common/component/HeaderTop';
 
 const  BottomNav= createBottomTabNavigator(
     {

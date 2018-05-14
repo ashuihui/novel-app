@@ -8,6 +8,8 @@ let type = {
     getRecommendation:'GET_RECOMMENDATION',
     login:'LOGIN',
     registered:'REGISTERED',
+    quit:'USER_QUIT',
+    isLogin:'IS_LOGIN',
     err:'ERR',
 };
 

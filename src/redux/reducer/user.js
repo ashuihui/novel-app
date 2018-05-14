@@ -36,6 +36,30 @@ const user = (state = {
                 testCode:null,
             };
             return regResult;
+        case type.quit:
+            const quitResult = {
+                userName:null,
+                userId:null,
+                password:null,
+                passwordTwo:null,
+                token:null,
+                isLogin:false,
+                isReg:false,
+                testCode:null,
+            };
+            return quitResult;
+        case type.isLogin:
+            const isLoginResult = {
+                userName:action.isLoginData.user.userName,
+                userId:action.isLoginData.user.userId,
+                password:null,
+                passwordTwo:null,
+                token:action.isLoginData.token,
+                isLogin:false,
+                isReg:true,
+                testCode:null,
+            };
+            return isLoginResult;
         default:
             return state
     }

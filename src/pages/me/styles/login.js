@@ -6,9 +6,6 @@ import px2dpW from '../../../common/styles/px2dpW';
 
 const styles = StyleSheet.create({
 
-    componentDidMount() {
-
-    },
     index:{
         backgroundColor:color.backprimary,
         padding:px2dp(10),
@@ -32,10 +29,7 @@ const styles = StyleSheet.create({
         borderWidth:px2dp(2),
         borderRadius:px2dp(10),
     },
-    buttonView:{
-        height:px2dp(150),
-        backgroundColor:color.backprimary,
-    },
+
 });
 
 module.exports = styles;
