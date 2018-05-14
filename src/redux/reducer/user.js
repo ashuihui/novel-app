@@ -1,7 +1,8 @@
 import type from '../action/type';
+import storage from '../../util/storage';
 
 
-const user = (state = {
+const user = async (state = {
     userName:null,
     userId:null,
     password:null,
@@ -13,6 +14,7 @@ const user = (state = {
 }, action) => {
     switch (action.type) {
         case type.login:
+            await storage.setToken(action.loginData.token);
             const loginResult = {
                 userName:action.loginData.user.userName,
                 userId:action.loginData.user.userId,

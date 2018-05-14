@@ -1,6 +1,8 @@
 
 import type from './type';
 import host from '../../util/host';
+import storage from '../../util/storage';
+
 
 export const fetchTotalRank = (num) => {
     let apiUrl= host.totalRankHost(num);
@@ -191,8 +193,9 @@ export const quit = (user) => {
         user
     }
 };
-export const isLogin = () => {
-    let apiUrl= host.userIsLogin();
+export const isLogin = async () => {
+    const localToken = await storage.getToken();
+    let apiUrl= host.userIsLogin(localToken);
     return dispatch => {
         fetch( apiUrl , {
             method: 'GET',
@@ -209,6 +212,8 @@ export const isLogin = () => {
                         type: type.isLogin,
                         isLoginData
                     })
+                }else{
+                    storage
                 }
             })
             .catch(function(err) {
