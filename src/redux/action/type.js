@@ -10,6 +10,7 @@ let type = {
     registered:'REGISTERED',
     quit:'USER_QUIT',
     isLogin:'IS_LOGIN',
+    addInterest:'ADD_Interest',
     err:'ERR',
 };
 

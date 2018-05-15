@@ -6,16 +6,23 @@ import { connect } from 'react-redux';
 import {
     fetchTotalRank ,
     fetchNewRank,
-    fetchBookShelf,
     isLogin,
 } from './redux/action';
+import storage from './util/storage';
 
 class App extends Component {
+    asyncAction=async ()=>{
+        try{
+            const localToken = await storage.getToken();
+            this.props.isLogin(localToken);
+        }catch (e) {
+            console.log(e);
+        }
+    }
     componentDidMount() {
         this.props.fetchTotalRank(0);
         this.props.fetchNewRank(10);
-        this.props.fetchBookShelf(20);
-        this.props.isLogin();
+        this.asyncAction();
     }
 
     render() {
@@ -28,6 +35,5 @@ class App extends Component {
 export default connect(null, {
     fetchTotalRank,
     fetchNewRank,
-    fetchBookShelf,
     isLogin,
 })(App)

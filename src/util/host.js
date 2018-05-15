@@ -29,7 +29,16 @@ const host ={
     userIsLogin:function (token) {
         let me = this;
         return `${me.hostPort}/user/isLogin?token=${token}`;
-    }
+    },
+    userInterest:function (token) {
+        let me = this;
+        return `${me.hostPort}/user/interest?token=${token}`;
+    },
+    addInterest:function (uid,nid) {
+        let me = this;
+        return `${me.hostPort}/interest/add?uid=${uid}&&nid=${nid}`;
+    },
+
 };
 module.exports =host;
 

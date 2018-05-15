@@ -2,7 +2,7 @@ import type from '../action/type';
 import storage from '../../util/storage';
 
 
-const user = async (state = {
+const user =  (state = {
     userName:null,
     userId:null,
     password:null,
@@ -14,7 +14,7 @@ const user = async (state = {
 }, action) => {
     switch (action.type) {
         case type.login:
-            await storage.setToken(action.loginData.token);
+             storage.setToken(action.loginData.token);
             const loginResult = {
                 userName:action.loginData.user.userName,
                 userId:action.loginData.user.userId,
@@ -28,13 +28,13 @@ const user = async (state = {
             return loginResult;
         case type.registered:
             const regResult = {
-                userName:action.regData.user.userName,
-                userId:action.regData.user.userId,
+                userName:null,
+                userId:null,
                 password:null,
                 passwordTwo:null,
-                token:action.loginData.token,
+                token:null,
                 isLogin:false,
-                isReg:true,
+                isReg:false,
                 testCode:null,
             };
             return regResult;
@@ -57,8 +57,8 @@ const user = async (state = {
                 password:null,
                 passwordTwo:null,
                 token:action.isLoginData.token,
-                isLogin:false,
-                isReg:true,
+                isLogin:true,
+                isReg:false,
                 testCode:null,
             };
             return isLoginResult;

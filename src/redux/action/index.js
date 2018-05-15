@@ -56,8 +56,8 @@ export const fetchNewRank = (num) => {
             })
     }
 };
-export const fetchBookShelf = (num) => {
-    let apiUrl= host.newRankHost(num);
+export const fetchBookShelf = (token) => {
+    let apiUrl= host.userInterest(token);
     return dispatch => {
         fetch( apiUrl , {
             method: 'GET',
@@ -74,8 +74,6 @@ export const fetchBookShelf = (num) => {
                         type: type.getBookShelf,
                         novelData
                     })
-                }else {
-                    alert('date err:'+resObj);
                 }
             })
             .catch(function(err) {
@@ -174,12 +172,13 @@ export const registered = (user) => {
                 const resObj=res;
                 if(resObj.success){
                     const regData=resObj.data;
+                    alert(resObj.msg);
                     dispatch({
                         type: type.registered,
                         regData
                     })
                 }else {
-                    alert('date err:'+resObj);
+                    alert('注册失败：'+resObj.msg);
                 }
             })
             .catch(function(err) {
@@ -193,8 +192,7 @@ export const quit = (user) => {
         user
     }
 };
-export const isLogin = async () => {
-    const localToken = await storage.getToken();
+export const isLogin =  (localToken) => {
     let apiUrl= host.userIsLogin(localToken);
     return dispatch => {
         fetch( apiUrl , {
@@ -221,6 +219,33 @@ export const isLogin = async () => {
             })
     }
 };
+export const addInterest = (uid,nid) => {
+    let apiUrl= host.addInterest(uid,nid);
+    return dispatch => {
+        fetch( apiUrl , {
+            method: 'GET',
+        })
+            .then((response) =>{
+                return response.json()
+            })
+            .then((res)=>{
+                const resObj=res;
+                if(resObj.success){
+                    const addInterestData=resObj.data;
+                    dispatch({
+                        type: type.addInterest,
+                        addInterestData
+                    })
+                }else {
+                    alert('添加失败'+resObj.msg);
+                }
+            })
+            .catch(function(err) {
+                alert('添加失败'+err);
+            })
+    }
+};
+
 
 
 

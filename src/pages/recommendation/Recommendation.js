@@ -17,7 +17,7 @@ class Recommendation extends Component{
     }
     render() {
         return (
-            <NovelCardList  {...this.props}   cardType={'toRead'} />
+            <NovelCardList  {...this.props}   cardType={'toRead'} buttonType={'addInterest'} />
         );
     }
 }

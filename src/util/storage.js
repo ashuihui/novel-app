@@ -13,15 +13,19 @@ let storage={
     },
     getToken:async function(){
         try {
-            const value = await AsyncStorage.getItem('token');
+            const value = await AsyncStorage.getItem('token',(err,result)=>{
+                if(err){
+                    console.log('get err :'+err+'-----\n'+result)
+                }
+            });
             if (value !== null){
+                console.log('token:'+value);
                 return value;
             }else{
                 return null;
             }
         } catch (error) {
             alert('获取token失败');
-
         }
     },
     removeToken:async function () {

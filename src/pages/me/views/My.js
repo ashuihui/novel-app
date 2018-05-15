@@ -4,12 +4,12 @@ import { Button,Text, View } from 'react-native';
 import styles from "../styles/my";
 import color from '../../../common/styles/color';
 import { connect } from 'react-redux'
-import {quit,isLogin} from "../../../redux/action";
+import {quit} from "../../../redux/action";
+import storage from '../../../util/storage';
 
 class My extends Component{
     componentWillReceiveProps (nextProps) {
         const { user}=nextProps;
-        this.props.isLogin();
         if( !user.isLogin){
             this.props.navigation.navigate('Login');
         }
@@ -22,7 +22,12 @@ class My extends Component{
     }
     userQuit=()=>{
         const { quit,user}=this.props;
-        quit(user);
+        if(user.isLogin){
+            quit(user);
+            storage.removeToken();
+        }else {
+            this.props.navigation.navigate('Login');
+        }
     }
     render() {
         const { quit,user}=this.props;
@@ -35,7 +40,7 @@ class My extends Component{
                 </View>
 
                 <Button
-                    title={'退出'}
+                    title={user.isLogin? '退出':'去登陆'}
                     color={color.accentColor}
                     onPress={this.userQuit}
                 />
@@ -50,5 +55,4 @@ const mapStateToProps = state => ({
 });
 export default connect(mapStateToProps, {
     quit,
-    isLogin
 })(My)

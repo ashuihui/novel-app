@@ -17,7 +17,7 @@ class Searcher extends Component{
     }
     render() {
         return (
-            <NovelCardList  {...this.props}  cardType={'toRecommendation'}/>
+            <NovelCardList  {...this.props}  cardType={'toRecommendation'} buttonType={'addInterest'}/>
         );
     }
 }

@@ -31,7 +31,7 @@ class NovelCardList extends Component{
             <View style={styles.tabButtomView}>
                 <FlatList
                     data={novelList}
-                    renderItem={({item}) => <NovelCard  cardType={'toRead'} {...item}  {...this.props}/>}
+                    renderItem={({item}) => <NovelCard  {...item}  {...this.props}/>}
                     refreshControl={
                         <RefreshControl
                             refreshing={this.state.refreshing}
