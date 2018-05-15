@@ -219,8 +219,8 @@ export const isLogin =  (localToken) => {
             })
     }
 };
-export const addInterest = (uid,nid) => {
-    let apiUrl= host.addInterest(uid,nid);
+export const addInterest = (token,nid) => {
+    let apiUrl= host.addInterest(token,nid);
     return dispatch => {
         fetch( apiUrl , {
             method: 'GET',
@@ -245,6 +245,33 @@ export const addInterest = (uid,nid) => {
             })
     }
 };
+export const deleteInterest = (token,nid) => {
+    let apiUrl= host.deleteInterest(token,nid);
+    return dispatch => {
+        fetch( apiUrl , {
+            method: 'GET',
+        })
+            .then((response) =>{
+                return response.json()
+            })
+            .then((res)=>{
+                const resObj=res;
+                if(resObj.success){
+                    const deleteInterestData=resObj.data;
+                    dispatch({
+                        type: type.deleteInterest,
+                        deleteInterestData
+                    })
+                }else {
+                    alert('删除失败'+resObj.msg);
+                }
+            })
+            .catch(function(err) {
+                alert('删除失败'+err);
+            })
+    }
+};
+
 
 
 

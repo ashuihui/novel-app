@@ -19,7 +19,6 @@ class Read extends Component{
         });
     }
     render() {
-        console.log(this.state);
         return (
             <WebView
                 style={styles.index}

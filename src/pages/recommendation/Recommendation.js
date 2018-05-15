@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux";
-import {fetchRecommendation} from "../../redux/action";
+import {addInterest, fetchRecommendation} from "../../redux/action";
 
 import NovelCardList from '../../common/component/NovelCardListNofresh';
 
@@ -24,9 +24,11 @@ class Recommendation extends Component{
 
 
 const mapStateToProps = state => ({
-    novelData: state.recommendation
+    novelData: state.recommendation,
+    user: state.user
 });
 const getData=fetchRecommendation;
 export default connect(mapStateToProps, {
     getData,
+    addInterest
 })(Recommendation)

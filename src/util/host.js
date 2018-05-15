@@ -1,3 +1,4 @@
+import {deleteInterest} from "../redux/action";
 
 
 const host ={
@@ -34,9 +35,13 @@ const host ={
         let me = this;
         return `${me.hostPort}/user/interest?token=${token}`;
     },
-    addInterest:function (uid,nid) {
+    addInterest:function (token,nid) {
         let me = this;
-        return `${me.hostPort}/interest/add?uid=${uid}&&nid=${nid}`;
+        return `${me.hostPort}/user/interest/add?token=${token}&&nid=${nid}`;
+    },
+    deleteInterest:function (token,nid) {
+        let me = this;
+        return `${me.hostPort}/user/interest/delete?token=${token}&&nid=${nid}`;
     },
 
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux";
-import {fetchSearcher} from "../../redux/action";
+import {fetchSearcher,addInterest} from "../../redux/action";
 
 import NovelCardList from '../../common/component/NovelCardListNofresh';
 
@@ -24,9 +24,11 @@ class Searcher extends Component{
 
 
 const mapStateToProps = state => ({
-    novelData: state.searcher
+    novelData: state.searcher,
+    user:state.user
 });
 const getData=fetchSearcher;
 export default connect(mapStateToProps, {
     getData,
+    addInterest
 })(Searcher)

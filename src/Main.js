@@ -8,6 +8,7 @@ import Me from './pages/me/Me';
 import Searcher from './pages/searcher/Searcher';
 import Recommendation from './pages/recommendation/Recommendation';
 import Read from './pages/read/Read';
+import Comment from './pages/comment/Comment';
 
 import color from './common/styles/color';
 import styles from './common/styles/index';
@@ -147,6 +148,16 @@ export  default createStackNavigator(
                 headerTintColor:color.primaryColorText
             }),
         },
+        Comment:{
+            screen:Comment,
+            navigationOptions: ({ navigation }) => ({
+                title:'评论',
+                gesturesEnabled:true,
+                headerStyle:styles.headerTop,
+                headerTitleStyle:styles.headerTitle,
+                headerTintColor:color.primaryColorText
+            }),
+        }
     },
     {
         headerMode:'screen',

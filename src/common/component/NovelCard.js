@@ -1,16 +1,38 @@
 import React,{Component} from 'react';
-import {Text,View,Image,StyleSheet,TouchableHighlight} from 'react-native';
+import {Text,View,Image,StyleSheet,TouchableHighlight,ActivityIndicator} from 'react-native';
 import Button from 'react-native-button';
 import px2dp from '../styles/px2dp';
 import color from '../styles/color';
 
  class Card extends Component {
      addInterest=()=>{
-
-         this.props.navigation.navigate('BookShelf');
+         const {user}= this.props;
+         if(!!user.token){
+             this.props.addInterest(user.token,this.props.nid);
+             this.props.navigation.navigate('BookShelf', {refresh: true});
+         }else {
+             alert('未登录');
+             this.props.navigation.navigate('Login');
+         }
      }
-     addCommend=()=>{
-
+     delete=()=>{
+         const {user}= this.props;
+         if(!!user.token){
+             this.props.deleteInterest(user.token,this.props.nid);
+             this.props.navigation.navigate('BookShelf', {refresh: true});
+         }else {
+             alert('未登录');
+             this.props.navigation.navigate('Login');
+         }
+     }
+     goComment=()=>{
+         const {user}= this.props;
+         if(!!user.token){
+             this.props.navigation.navigate('Comment', {nid: this.props.nid});
+         }else {
+             alert('未登录');
+             this.props.navigation.navigate('Login');
+         }
      }
      render() {
          if(this.props.buttonType==='addInterest'){
@@ -45,16 +67,25 @@ import color from '../styles/color';
                      </View>
                      <View style={styles.infoView}>
                          <Text style={styles.title}>{this.props.novelName}</Text>
-                         <Text style={styles.text}>作者：{this.props.author}</Text>
+                         <View style={styles.textButton}>
+                             <Text style={styles.text}>作者：{this.props.author}</Text>
+                             <View style={styles.buttonView}>
+                                 <Button
+                                     style={styles.button}
+                                     onPress={this.goComment}>
+                                     去评价
+                                 </Button>
+                             </View>
+                         </View>
                          <Text style={styles.text}>字数：{this.props.wordCount}</Text>
                          <Text style={styles.text}>最后更新：{this.props.updateTime}</Text>
                          <View style={styles.textButton}>
                              <Text style={styles.text}>来自：{this.props.beFrom}</Text>
                              <View style={styles.buttonView}>
                                  <Button
-                                     style={styles.button}
-                                     onPress={this.addCommend}>
-                                     去评价
+                                     style={styles.buttonDel}
+                                     onPress={this.delete}>
+                                     删除
                                  </Button>
                              </View>
                          </View>
@@ -75,19 +106,19 @@ export default class NovelCard extends Component {
     }
     render() {
         //buttonType={'addInterest'}
-        if(this.props.cardType==='toRecommendation'){
+        if(this.props.cardType==='toRead'){
+            return(
+                <TouchableHighlight onPress={this.toRead}>
+                    <Card {...this.props}/>
+                </TouchableHighlight>
+            )
+        }else{
             return(
                 <View>
                     <TouchableHighlight onPress={this.toRecommendation}>
                         <Card {...this.props}/>
                     </TouchableHighlight>
                 </View>
-            )
-        }else{
-            return(
-                <TouchableHighlight onPress={this.toRead}>
-                    <Card {...this.props}/>
-                </TouchableHighlight>
             )
         }
 
@@ -135,19 +166,19 @@ const styles = StyleSheet.create({
     },
     text:{
         height:px2dp(25),
+        width:px2dp(200),
         fontSize:px2dp(16),
         color:color.secondaryTextColor,
     },
     textButton:{
         height:px2dp(25),
-        fontSize:px2dp(16),
-        color:color.secondaryTextColor,
         flex:1,
         flexDirection:'row',
         justifyContent:'space-between'
     },
     buttonView:{
         height:px2dp(24),
+        width:px2dp(100),
         flex:1,
         flexDirection:'row',
         justifyContent:'flex-end',
@@ -155,8 +186,15 @@ const styles = StyleSheet.create({
 
     },
     button:{
+        flex:1,
         height:px2dp(24),
         fontSize:px2dp(16),
         color:color.accentColor,
+    },
+    buttonDel:{
+        flex:1,
+        height:px2dp(24),
+        fontSize:px2dp(16),
+        color:color.dividerColor,
     }
 });

@@ -11,6 +11,7 @@ let type = {
     quit:'USER_QUIT',
     isLogin:'IS_LOGIN',
     addInterest:'ADD_Interest',
+    deleteInterest:'DELETE_INTEREST',
     err:'ERR',
 };
 
