@@ -43,6 +43,7 @@ export  default  createMaterialTopTabNavigator(
             labelStyle: styles.labelStyle,
             style: styles.tabTop,
             indicatorStyle:styles.lineTab,
-        }
+        },
+        initialRouteName:'TotalRank',
     }
     );
