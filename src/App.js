@@ -4,10 +4,11 @@ import React, { Component } from 'react';
 import Main from './Main';
 import { connect } from 'react-redux';
 import {
-    fetchTotalRank ,
+    fetchTotalRank,
     fetchNewRank,
     isLogin,
     fetCommentsFlow,
+    fetchBookShelf,
 } from './redux/action';
 import storage from './util/storage';
 
@@ -16,6 +17,9 @@ class App extends Component {
         try{
             const localToken = await storage.getToken();
             this.props.isLogin(localToken);
+            setTimeout(()=>{
+                this.props.fetchBookShelf(localToken);
+            })
         }catch (e) {
             console.log(e);
         }
@@ -38,5 +42,6 @@ export default connect(null, {
     fetchTotalRank,
     fetchNewRank,
     isLogin,
-   fetCommentsFlow
+   fetCommentsFlow,
+    fetchBookShelf
 })(App)
