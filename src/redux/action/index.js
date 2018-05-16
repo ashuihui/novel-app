@@ -271,6 +271,98 @@ export const deleteInterest = (token,nid) => {
             })
     }
 };
+export const addComment = (token,commentObj) => {
+    let apiUrl= host.addComment(token,commentObj);
+    return dispatch => {
+        fetch( apiUrl , {
+            method: 'GET',
+        })
+            .then((response) =>{
+                return response.json()
+            })
+            .then((res)=>{
+                const resObj=res;
+                if(resObj.success){
+                    const msg=resObj.data.msg;
+                    alert(msg);
+                    dispatch({
+                        type: type.addComment,
+                        msg
+                    })
+                }else {
+                    alert('评论失败'+resObj.msg);
+                }
+            })
+            .catch(function(err) {
+                alert('评论失败'+err);
+            })
+    }
+};
+export const fetNovelComments = (nid,num=0) => {
+    let apiUrl= host.fetNovelComments(nid,num);
+    return dispatch => {
+        fetch( apiUrl , {
+            method: 'GET',
+        })
+            .then((response) =>{
+                return response.json();
+            })
+            .then((res)=>{
+                const resObj=res;
+                if(resObj.success){
+                    const data=resObj.data;
+                    dispatch({
+                        type: type.getNovelComments,
+                        data
+                    })
+                }else {
+                    alert('获取评论失败');
+                }
+            })
+            .catch(function(err) {
+                alert('获取评论失败 '+ err)
+            })
+    }
+};
+export const clearNovelComments = () => {
+    return {
+        type: type.clearNovelComments,
+        data:null
+    }
+};
+export const fetCommentsFlow = (num=0) => {
+    let apiUrl= host.fetCommentsFlow(num);
+    return dispatch => {
+        fetch( apiUrl , {
+            method: 'GET',
+        })
+            .then((response) =>{
+                return response.json();
+            })
+            .then((res)=>{
+                const resObj=res;
+                if(resObj.success){
+                    const data=resObj.data;
+                    dispatch({
+                        type: type.fetCommentsFlow,
+                        data
+                    })
+                }else {
+                    alert('获取评论失败');
+                }
+            })
+            .catch(function(err) {
+                alert('获取评论失败 '+ err)
+            })
+    }
+};
+export const clearCommentsFlow = () => {
+    return {
+        type: type.clearCommentsFlow,
+        data:null
+    }
+};
+
 
 
 

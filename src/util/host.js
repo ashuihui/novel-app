@@ -37,11 +37,23 @@ const host ={
     },
     addInterest:function (token,nid) {
         let me = this;
-        return `${me.hostPort}/user/interest/add?token=${token}&&nid=${nid}`;
+        return `${me.hostPort}/user/interest/add?token=${token}&nid=${nid}`;
     },
     deleteInterest:function (token,nid) {
         let me = this;
-        return `${me.hostPort}/user/interest/delete?token=${token}&&nid=${nid}`;
+        return `${me.hostPort}/user/interest/delete?token=${token}&nid=${nid}`;
+    },
+    addComment:function (token,commentObj) {
+        let me = this;
+        return `${me.hostPort}/comment/add?token=${token}&nid=${commentObj.nid}&novelName=${commentObj.novelName}&uid=${commentObj.uid}&userName=${commentObj.userName}&comment=${commentObj.comment}&score=${commentObj.score}&updateTime=${commentObj.updateTime}`;
+    },
+    fetNovelComments:function (nid,num) {
+        let me = this;
+        return `${me.hostPort}/comment/novel?nid=${nid}&num=${num}`;
+    },
+    fetCommentsFlow:function (num) {
+        let me = this;
+        return `${me.hostPort}/comment/flow?num=${num}`;
     },
 
 };

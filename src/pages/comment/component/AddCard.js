@@ -1,3 +1,5 @@
+import dateFormat from 'dateformat';
+
 import React, { Component } from 'react'
 import { TextInput,View,Text,Image ,TouchableHighlight} from 'react-native';
 import color from '../../../common/styles/color';
@@ -11,17 +13,41 @@ class AddCard extends Component{
         super(props);
         this.state = {
             star: 0,
-            word:'none'
+            word:''
         }
     }
     handleTextChange=(word)=>{
         this.setState({word});
     }
     add=()=>{
-        console.log(this.props.nid)
-        console.log(this.props.novelName)
-        console.log('onpress :'+this.state.word+this.state.star);
-
+        if(this.state.star>0){
+           if(this.state.word.length>0){
+               if(!!this.props.user.token){
+                   const result={
+                           nid:this.props.nid,
+                           novelName:this.props.novelName,
+                           uid:this.props.user.userId,
+                           userName:this.props.user.userName,
+                           comment:this.state.word,
+                           score:this.state.star,
+                           updateTime:dateFormat(new Date(),'yyyy-mm-dd HH:MM:ss')
+               };
+                   this.props.addComment(this.props.user.token,result);
+                   this.setState(()=>{
+                       return {
+                           word:''
+                       }
+                   });
+                   this.refs.textInput.clear();
+               }else{
+                   alert('尚未登录')
+               }
+           }else{
+               alert('没有评论')
+           }
+        }else{
+            alert('没有评分')
+        }
     }
     render() {
         const arr=[1,2,3,4,5];
@@ -59,8 +85,9 @@ class AddCard extends Component{
                     {starList}
                 </View>
                 <TextInput
+                    ref={'textInput'}
                     style={styles.textInput}
-                    maxLength={200}
+                    maxLength={100}
                     multiline={true}
                     onChangeText={this.handleTextChange}
                     onSubmitEditing={this.add}
@@ -76,4 +103,7 @@ class AddCard extends Component{
     }
 }
 
+
+
 export default AddCard;
+

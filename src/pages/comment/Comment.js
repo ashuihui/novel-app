@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { View} from 'react-native'
 import {connect} from "react-redux";
 
-import {fetchComment} from "../../redux/action";
+import {fetNovelComments,addComment,clearNovelComments} from "../../redux/action";
 import NovelCard from '../../common/component/Card';
 import  styles from './styles/index';
 import AddCard  from './component/AddCard';
+import Comments  from './component/Comments';
 
 
 
@@ -18,14 +19,14 @@ class Comment extends Component{
         };
     }
     componentWillMount() {
-        // this.props.fetchComment(this.state.nid);
+        this.props.fetNovelComments(this.state.nid,0);
     }
     render() {
         return (
             <View style={styles.index}>
+                <NovelCard {...this.props.novel}/>
                 <AddCard {...this.props} {...this.state}/>
-                {/*<NovelCard {...props}/>*/}
-
+                <Comments {...this.props} {...this.state}/>
             </View>
         );
     }
@@ -33,8 +34,12 @@ class Comment extends Component{
 
 
 const mapStateToProps = state => ({
-    user: state.user
+    user: state.user,
+    novel:state.novel,
+    comments:state.novelComments,
 });
 export default connect(mapStateToProps, {
-    fetchComment
+    addComment,
+    fetNovelComments,
+    clearNovelComments,
 })(Comment)

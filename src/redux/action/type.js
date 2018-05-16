@@ -12,6 +12,11 @@ let type = {
     isLogin:'IS_LOGIN',
     addInterest:'ADD_Interest',
     deleteInterest:'DELETE_INTEREST',
+    addComment:'ADD_COMMENT',
+    getNovelComments:'GET_NOVEL_COMMENTS',
+    clearNovelComments:'CLEAR_NOVEL_COMMENTS',
+    fetCommentsFlow:'FETCH_COMMENTS_FLOW',
+    clearCommentsFlow:'CLEAR_COMMENTS_FLOW',
     err:'ERR',
 };
 

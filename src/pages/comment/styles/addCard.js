@@ -5,7 +5,7 @@ import px2dpW from '../../../common/styles/px2dpW';
 const styles = StyleSheet.create({
     card:{
         height:px2dp(300),
-        width:px2dpW(345),
+        width:px2dpW(355),
         display:'flex',
         flexDirection:'column',
         alignItems:'center',
@@ -42,16 +42,20 @@ const styles = StyleSheet.create({
 
     textInput:{
         height:px2dp(200),
-        width:px2dpW(345),
+        width:px2dpW(355),
         fontSize:px2dp(22),
         backgroundColor:color.primaryColorText,
     },
     button:{
+        height:px2dp(50),
+        width:px2dpW(350),
         backgroundColor:color.accentColor,
-        borderRadius:px2dp(15),
         color:color.primaryColorText,
         fontSize:px2dp(22),
-        height:px2dp(50),
+        lineHeight:px2dp(50),
+        borderRadius:px2dp(15),
+        justifyContent:'center',
+        alignItems:'center'
     },
 });
 

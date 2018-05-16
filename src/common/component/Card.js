@@ -24,16 +24,12 @@ class Card extends Component {
 
 const styles = StyleSheet.create({
     card:{
-        backgroundColor:color.primaryColorText,
+        backgroundColor:color.backprimary,
         padding:px2dp(16),
-        flex:1,
         flexDirection:'row',
         flexWrap:'nowrap',
         alignItems:'stretch',
         height:px2dp(155),
-        borderTopWidth:px2dp(1),
-        borderStyle:'solid',
-        borderColor:color.dividerColor,
     },
     imgView:{
         width:px2dp(90),

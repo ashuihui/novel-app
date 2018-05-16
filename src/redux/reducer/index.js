@@ -5,6 +5,9 @@ import bookShelf from'./bookShelf'
 import searcher from'./searcher'
 import recommendation from'./recommendation'
 import user from'./user'
+import novel from'./novel'
+import novelComments from'./novelComments'
+import commentsFlow from'./commentsFlow'
 
 const rootReducer = combineReducers({
     totalRank,
@@ -12,7 +15,10 @@ const rootReducer = combineReducers({
     bookShelf,
     searcher,
     recommendation,
-    user
+    user,
+    novel,
+    novelComments,
+    commentsFlow
 });
 
 export default rootReducer
