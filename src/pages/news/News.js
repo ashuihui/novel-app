@@ -26,7 +26,7 @@ class News extends Component{
     }
     freshMore=()=>{
         const { comments,fetCommentsFlow}=this.props;
-        fetCommentsFlow(comments.length-1);
+        fetCommentsFlow(comments.length);
     }
     render() {
         const {comments} = this.props;

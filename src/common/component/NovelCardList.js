@@ -12,12 +12,12 @@ class NovelCardList extends Component{
     }
     _onRefresh() {
         const { getData,novelData}=this.props;
-        getData(novelData.length-1);
+        getData(novelData.length);
         this.setState({refreshing: false});
     }
     freshMore=()=>{
         const { getData,novelData}=this.props;
-        getData(novelData.length-1);
+        getData(novelData.length);
     }
     render() {
         const {novelData} = this.props;
