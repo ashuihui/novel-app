@@ -6,6 +6,7 @@ import color from '../../../common/styles/color';
 
 import Button from 'react-native-button';
 import styles from '../styles/addCard';
+import {clearNovelComments, fetNovelComments} from "../../../redux/action";
 
 
 class AddCard extends Component{
@@ -32,7 +33,11 @@ class AddCard extends Component{
                            score:this.state.star,
                            updateTime:dateFormat(new Date(),'yyyy-mm-dd HH:MM:ss')
                };
+                   this.props.clearNovelComments();
                    this.props.addComment(this.props.user.token,result);
+                   setTimeout(()=>{
+                       this.props.fetNovelComments(this.props.nid,0);
+                   },200);
                    this.setState(()=>{
                        return {
                            word:''

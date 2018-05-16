@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, FlatList, StyleSheet,RefreshControl} from 'react-native';
 import {connect} from "react-redux";
 
-import {fetCommentsFlow,clearCommentsFlow,fetNovelComments} from "../../redux/action";
+import {fetCommentsFlow,clearCommentsFlow,clearNovelComments,fetNovelComments} from "../../redux/action";
 import CommentCard from './component/CommentCard';
 import color from "../../common/styles/color";
 import px2dp from "../../common/styles/px2dp";
@@ -15,9 +15,6 @@ class News extends Component{
         this.state = {
             refreshing: false,
         };
-    }
-    componentWillMount() {
-        this.props.fetCommentsFlow(0);
     }
     _onRefresh() {
         const { clearCommentsFlow,fetCommentsFlow}=this.props;
@@ -74,4 +71,5 @@ export default connect(mapStateToProps, {
     fetCommentsFlow,
     clearCommentsFlow,
     fetNovelComments,
+    clearNovelComments,
 })(News)

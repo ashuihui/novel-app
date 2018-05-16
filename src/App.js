@@ -7,6 +7,7 @@ import {
     fetchTotalRank ,
     fetchNewRank,
     isLogin,
+    fetCommentsFlow,
 } from './redux/action';
 import storage from './util/storage';
 
@@ -22,6 +23,7 @@ class App extends Component {
     componentDidMount() {
         this.props.fetchTotalRank(0);
         this.props.fetchNewRank(10);
+        this.props.fetCommentsFlow(0);
         this.asyncAction();
     }
 
@@ -36,4 +38,5 @@ export default connect(null, {
     fetchTotalRank,
     fetchNewRank,
     isLogin,
+   fetCommentsFlow
 })(App)

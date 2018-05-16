@@ -19,6 +19,7 @@ class Comment extends Component{
         };
     }
     componentWillMount() {
+        this.props.clearNovelComments();
         this.props.fetNovelComments(this.state.nid,0);
     }
     render() {

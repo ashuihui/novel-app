@@ -5,10 +5,11 @@ import color from "../../../common/styles/color";
 
 class Card extends Component {
     toRead=()=>{
+        this.props.clearNovelComments();
         this.props.fetNovelComments(this.props.nid,0);
         setTimeout(()=>{
             this.props.navigation.navigate('Read', {novelUrl: this.props.novel.novelUrl});
-        },500)
+        },400)
     }
     render() {
         return(
@@ -23,7 +24,9 @@ class Card extends Component {
                         <Text style={styles.score}>{this.props.score}</Text>
                     </View>
                 </View>
-                <TouchableHighlight onPress={this.toRead}>
+                <TouchableHighlight
+                    onPress={this.toRead}
+                >
                     <View style={styles.novelView}>
                         <View style={styles.titleView}>
                             <Text style={styles.title}>《 {this.props.novelName}  》</Text>
@@ -65,6 +68,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         borderBottomWidth:px2dp(1),
         borderColor:color.dividerColor,
+        backgroundColor:color.primaryColorText,
     },
     scoreView:{
         flexDirection:'row',

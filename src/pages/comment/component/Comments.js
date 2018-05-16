@@ -20,10 +20,6 @@ class CommentsCardList extends Component{
             this.setState({refreshing: false});
         })
     }
-    freshMore=()=>{
-        const { nid,fetNovelComments,comments}=this.props;
-        fetNovelComments(nid,comments.length-1);
-    }
     render() {
         const {comments} = this.props;
         const commentsList = comments.map(
@@ -43,8 +39,6 @@ class CommentsCardList extends Component{
                             onRefresh={this._onRefresh.bind(this)}
                         />
                     }
-                    onEndReachedThreshold={0.01}
-                    onEndReached={this.freshMore}
                 />
             </View>
         );
