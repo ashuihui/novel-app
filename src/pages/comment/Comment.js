@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { View} from 'react-native'
 import {connect} from "react-redux";
 
-import NovelCard from '../../common/component/Card';
 import {fetchComment} from "../../redux/action";
+import NovelCard from '../../common/component/Card';
+import  styles from './styles/index';
+import AddCard  from './component/AddCard';
 
 
 
@@ -12,15 +14,18 @@ class Comment extends Component{
         super(props);
         this.state = {
             nid: this.props.navigation.state.params.nid,
+            novelName:this.props.navigation.state.params.novelName,
         };
     }
     componentWillMount() {
-        this.props.fetchComment(this.state.nid);
+        // this.props.fetchComment(this.state.nid);
     }
     render() {
         return (
-            <View>
-                <NovelCard {...props}/>
+            <View style={styles.index}>
+                <AddCard {...this.props} {...this.state}/>
+                {/*<NovelCard {...props}/>*/}
+
             </View>
         );
     }

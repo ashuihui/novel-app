@@ -28,7 +28,7 @@ import color from '../styles/color';
      goComment=()=>{
          const {user}= this.props;
          if(!!user.token){
-             this.props.navigation.navigate('Comment', {nid: this.props.nid});
+             this.props.navigation.navigate('Comment', {nid: this.props.nid,novelName:this.props.novelName});
          }else {
              alert('未登录');
              this.props.navigation.navigate('Login');
@@ -73,7 +73,7 @@ import color from '../styles/color';
                                  <Button
                                      style={styles.button}
                                      onPress={this.goComment}>
-                                     去评价
+                                     去评论
                                  </Button>
                              </View>
                          </View>
@@ -127,7 +127,7 @@ export default class NovelCard extends Component {
 
 const styles = StyleSheet.create({
     card:{
-        backgroundColor:color.primaryColorText,
+        backgroundColor:color.backprimary,
         padding:px2dp(16),
         flex:1,
         flexDirection:'row',
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
         height:px2dp(25),
         flex:1,
         flexDirection:'row',
-        justifyContent:'space-between'
+        justifyContent:'space-between',
     },
     buttonView:{
         height:px2dp(24),
@@ -182,19 +182,22 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:'row',
         justifyContent:'flex-end',
-        backgroundColor:color.primaryColorText,
-
+        backgroundColor:color.backprimary,
     },
     button:{
         flex:1,
         height:px2dp(24),
         fontSize:px2dp(16),
         color:color.accentColor,
+        backgroundColor:color.backprimary,
+
     },
     buttonDel:{
         flex:1,
         height:px2dp(24),
         fontSize:px2dp(16),
         color:color.dividerColor,
+        backgroundColor:color.backprimary,
+
     }
 });
