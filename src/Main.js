@@ -99,6 +99,7 @@ const  BottomNav= createBottomTabNavigator(
         },
     },
     {
+        initialRouteName:'Rank',
         tabBarOptions: {
             activeTintColor: color.primaryColorDark,
             inactiveTintColor:color.secondaryTextColor,
