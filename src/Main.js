@@ -105,8 +105,7 @@ const  BottomNav= createBottomTabNavigator(
             labelStyle: styles.labelStyle,
             style: styles.tabBottom,
             showIcon: true
-        },
-        initialRouteName:Rank,
+        }
     }
 );
 
@@ -162,7 +161,6 @@ export  default createStackNavigator(
     },
     {
         headerMode:'screen',
-        initialRouteName:'Main'
     }
 );
 
