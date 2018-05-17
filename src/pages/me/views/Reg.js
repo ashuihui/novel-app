@@ -1,10 +1,11 @@
 
 import React, { Component } from 'react'
 import { Button,TextInput, View } from 'react-native';
-import styles from "../styles/login";
+import styles from '../styles/login';
 import color from '../../../common/styles/color';
 import { connect } from 'react-redux'
-import {registered} from "../../../redux/action";
+import {registered} from '../../../redux/action';
+import toast from '../../../util/toast';
 
 class Reg extends Component{
     componentWillReceiveProps (nextProps) {
@@ -15,6 +16,7 @@ class Reg extends Component{
         if( user.isReg){
             this.props.navigation.navigate('Login');
         }
+
     }
     registered=()=>{
         const { registered,user}=this.props;
@@ -22,10 +24,10 @@ class Reg extends Component{
             if(user.userName&&user.testCode&&user.password){
                 registered(user);
             }else {
-                alert('不能为空')
+                toast.toastShort('不能为空');
             }
         }else{
-            alert('输入的密码不一致')
+            toast.toastShort('输入的密码不一致')
         }
         this.refs.userName.clear();
         this.refs.password.clear();

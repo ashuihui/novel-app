@@ -6,7 +6,7 @@ import color from '../../../common/styles/color';
 
 import Button from 'react-native-button';
 import styles from '../styles/addCard';
-import {clearNovelComments, fetNovelComments} from "../../../redux/action";
+import toast from '../../../util/toast';
 
 
 class AddCard extends Component{
@@ -45,13 +45,13 @@ class AddCard extends Component{
                    });
                    this.refs.textInput.clear();
                }else{
-                   alert('尚未登录')
+                   toast.toastShort('尚未登录')
                }
            }else{
-               alert('没有评论')
+               toast.toastShort('没有评论')
            }
         }else{
-            alert('没有评分')
+            toast.toastShort('没有评分')
         }
     }
     render() {

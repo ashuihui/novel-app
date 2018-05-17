@@ -8,7 +8,7 @@ let storage={
         try {
             await AsyncStorage.setItem('token',token);
         } catch (error) {
-            alert('存储token失败');
+            console.log('存储token失败');
         }
     },
     getToken:async function(){
@@ -19,20 +19,19 @@ let storage={
                 }
             });
             if (value !== null){
-                console.log('token:'+value);
                 return value;
             }else{
                 return null;
             }
         } catch (error) {
-            alert('获取token失败');
+            console.log('获取token失败');
         }
     },
     removeToken:async function () {
         try {
             const value = await AsyncStorage.removeItem('token');
         } catch (error) {
-            alert('删除token失败');
+            console.log('删除token失败');
         }
     }
 }

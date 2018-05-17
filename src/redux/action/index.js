@@ -1,7 +1,7 @@
 
 import type from './type';
 import host from '../../util/host';
-import storage from '../../util/storage';
+import toast from '../../util/toast';
 
 
 export const fetchTotalRank = (num) => {
@@ -21,12 +21,12 @@ export const fetchTotalRank = (num) => {
                         type: type.getTotalRank,
                         novelData
                     })
-                }else {
-                    alert('date err:'+resObj);
+                }else{
+                    toast.toastShort(resObj.msg);
                 }
             })
         .catch(function(err) {
-            alert('no get :'+ err)
+            toast.toastShort('无网络')
         })
     }
 };
@@ -47,12 +47,12 @@ export const fetchNewRank = (num) => {
                         type: type.getNewRank,
                         novelData
                     })
-                }else {
-                    alert('date err:'+resObj);
+                }else{
+                    toast.toastShort(resObj.msg);
                 }
             })
             .catch(function(err) {
-                alert('no get :'+ err)
+                toast.toastShort('无网络')
             })
     }
 };
@@ -77,7 +77,7 @@ export const fetchBookShelf = (token) => {
                 }
             })
             .catch(function(err) {
-                alert('no get :'+ err)
+                toast.toastShort('无网络')
             })
     }
 };
@@ -98,12 +98,12 @@ export const fetchSearcher = (word) => {
                         type: type.getSearcher,
                         novelData
                     })
-                }else {
-                    alert('date err:'+resObj);
+                }else{
+                    toast.toastShort(resObj.msg);
                 }
             })
             .catch(function(err) {
-                alert('no get :'+ err)
+                toast.toastShort('无网络')
             })
     }
 };
@@ -124,12 +124,12 @@ export const fetchRecommendation = (nid) => {
                         type: type.getRecommendation,
                         novelData
                     })
-                }else {
-                    alert('date err:'+resObj);
+                }else{
+                    toast.toastShort(resObj.msg);
                 }
             })
             .catch(function(err) {
-                alert('no get :'+ err)
+                toast.toastShort('无网络')
             })
     }
 };
@@ -150,12 +150,12 @@ export const login = (user) => {
                         type: type.login,
                         loginData
                     })
-                }else {
-                    alert('date err:'+resObj);
+                }else{
+                    toast.toastShort(resObj.msg);
                 }
             })
             .catch(function(err) {
-                alert('no get :'+ err)
+                toast.toastShort('无网络')
             })
     }
 };
@@ -172,17 +172,17 @@ export const registered = (user) => {
                 const resObj=res;
                 if(resObj.success){
                     const regData=resObj.data;
-                    alert(resObj.msg);
                     dispatch({
                         type: type.registered,
                         regData
-                    })
+                    });
+                    toast.toastShort(resObj.msg);
                 }else {
-                    alert('注册失败：'+resObj.msg);
+                    toast.toastShort(resObj.msg);
                 }
             })
             .catch(function(err) {
-                alert('no get :'+ err)
+                toast.toastShort('无网络')
             })
     }
 };
@@ -210,12 +210,10 @@ export const isLogin =  (localToken) => {
                         type: type.isLogin,
                         isLoginData
                     })
-                }else{
-                    storage
                 }
             })
             .catch(function(err) {
-                alert('no get :'+ err)
+                toast.toastShort('无网络')
             })
     }
 };
@@ -237,11 +235,11 @@ export const addInterest = (token,nid) => {
                         addInterestData
                     })
                 }else {
-                    alert('添加失败'+resObj.msg);
+                    toast.toastShort(resObj.msg);
                 }
             })
             .catch(function(err) {
-                alert('添加失败'+err);
+                toast.toastShort('无网络')
             })
     }
 };
@@ -263,11 +261,11 @@ export const deleteInterest = (token,nid) => {
                         deleteInterestData
                     })
                 }else {
-                    alert('删除失败'+resObj.msg);
+                    toast.toastShort(resObj.msg);
                 }
             })
             .catch(function(err) {
-                alert('删除失败'+err);
+                toast.toastShort('无网络')
             })
     }
 };
@@ -284,17 +282,16 @@ export const addComment = (token,commentObj) => {
                 const resObj=res;
                 if(resObj.success){
                     const msg=resObj.data.msg;
-                    alert(msg);
                     dispatch({
                         type: type.addComment,
                         msg
                     })
                 }else {
-                    alert('评论失败'+resObj.msg);
+                    toast.toastShort(resObj.msg);
                 }
             })
             .catch(function(err) {
-                alert('评论失败'+err);
+                toast.toastShort('无网络')
             })
     }
 };
@@ -316,11 +313,11 @@ export const fetNovelComments = (nid,num=0) => {
                         data
                     })
                 }else {
-                    alert('获取评论失败');
+                    toast.toastShort('获取评论失败');
                 }
             })
             .catch(function(err) {
-                alert('获取评论失败 '+ err)
+                toast.toastShort('无网络')
             })
     }
 };
@@ -348,11 +345,11 @@ export const fetCommentsFlow = (num=0) => {
                         data
                     })
                 }else {
-                    alert('获取评论失败');
+                    toast.toastShort('获取信息流失败');
                 }
             })
             .catch(function(err) {
-                alert('获取评论失败 '+ err)
+                toast.toastShort('无网络')
             })
     }
 };

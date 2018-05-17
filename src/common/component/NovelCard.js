@@ -3,6 +3,7 @@ import {Text,View,Image,StyleSheet,TouchableHighlight,ActivityIndicator} from 'r
 import Button from 'react-native-button';
 import px2dp from '../styles/px2dp';
 import color from '../styles/color';
+import toast from '../../util/toast';
 
  class Card extends Component {
      addInterest=()=>{
@@ -11,7 +12,7 @@ import color from '../styles/color';
              this.props.addInterest(user.token,this.props.nid);
              this.props.navigation.navigate('BookShelf', {refresh: true});
          }else {
-             alert('未登录');
+             toast.toastShort('未登录');
              this.props.navigation.navigate('Login');
          }
      }
@@ -21,7 +22,7 @@ import color from '../styles/color';
              this.props.deleteInterest(user.token,this.props.nid);
              this.props.navigation.navigate('BookShelf', {refresh: true});
          }else {
-             alert('未登录');
+             toast.toastShort('未登录');
              this.props.navigation.navigate('Login');
          }
      }
@@ -30,7 +31,7 @@ import color from '../styles/color';
          if(!!user.token){
              this.props.navigation.navigate('Comment', {nid: this.props.nid,novelName:this.props.novelName});
          }else {
-             alert('未登录');
+             toast.toastShort('未登录');
              this.props.navigation.navigate('Login');
          }
      }
