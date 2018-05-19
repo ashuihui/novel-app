@@ -5,11 +5,11 @@ const host ={
     hostPort:'http://118.89.32.47:7280',
     totalRankHost:function (num) {
         let me = this;
-        return `${me.hostPort}/rank?num=${num}`;
+        return `${me.hostPort}/rank/total?num=${num}`;
     },
     newRankHost:function (num) {
         let me = this;
-        return `${me.hostPort}/rank?num=${num}`;
+        return `${me.hostPort}/rank/new?num=${num}`;
     },
     searcherHost:function (word) {
         let me = this;
