@@ -29,6 +29,9 @@ class My extends Component{
             this.props.navigation.navigate('Login');
         }
     }
+    toRecommendation=()=>{
+        this.props.navigation.navigate('Recommendation', {nid: 0});
+    }
     render() {
         const { quit,user}=this.props;
         return (
@@ -39,11 +42,22 @@ class My extends Component{
                     </Text>
                 </View>
 
+                {user.isLogin?
+                    <Button
+                        title={'猜你喜欢'}
+                        color={color.accentColor}
+                        onPress={this.toRecommendation}
+                    />
+                    :null}
+                <View>
+                    <Text style={styles.kkry}>HI</Text>
+                </View>
                 <Button
                     title={user.isLogin? '退出':'去登陆'}
                     color={color.accentColor}
                     onPress={this.userQuit}
                 />
+
             </View>
         );
     }

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     },
     titleView:{
         flex:1,
-        height:px2dp(500),
+        height:px2dp(400),
         flexDirection:'column',
         justifyContent:'center',
         alignItems:'center',
@@ -23,13 +23,16 @@ const styles = StyleSheet.create({
     },
     title:{
         flex:1,
-        height:px2dp(500),
-        lineHeight:px2dp(500),
+        height:px2dp(400),
+        lineHeight:px2dp(400),
         paddingBottom:px2dp(20),
         textAlign:'center',
         fontSize:px2dp(30),
         fontWeight:'bold',
         color:color.primaryColor
+    },
+    kkry:{
+        color:color.backprimary,
     },
 });
 

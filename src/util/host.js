@@ -55,6 +55,10 @@ const host ={
         let me = this;
         return `${me.hostPort}/comment/flow?num=${num}`;
     },
+    userRecommendationHost:function (token) {
+        let me = this;
+        return `${me.hostPort}/user/recommendation?token=${token}`;
+    },
 
 };
 module.exports =host;

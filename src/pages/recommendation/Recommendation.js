@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux";
-import {addInterest, fetchRecommendation} from "../../redux/action";
+import {addInterest, fetchRecommendation,getUserRecommendation} from "../../redux/action";
 
 import NovelCardList from '../../common/component/NovelCardListNofresh';
 
@@ -13,7 +13,11 @@ class Recommendation extends Component{
         };
     }
     componentDidMount() {
-        this.props.getData(this.state.nid);
+        if(this.state.nid!==0){
+            this.props.getData(this.state.nid);
+        }else{
+            this.props.getUserRecommendation(this.props.user.token);
+        }
     }
     render() {
         return (
@@ -30,5 +34,6 @@ const mapStateToProps = state => ({
 const getData=fetchRecommendation;
 export default connect(mapStateToProps, {
     getData,
-    addInterest
+    addInterest,
+    getUserRecommendation
 })(Recommendation)

@@ -359,6 +359,33 @@ export const clearCommentsFlow = () => {
         data:null
     }
 };
+export const getUserRecommendation = (token) => {
+    let apiUrl= host.userRecommendationHost(token);
+    return dispatch => {
+        fetch( apiUrl , {
+            method: 'GET',
+        })
+            .then((response) =>{
+                return response.json()
+            })
+            .then((res)=>{
+                const resObj=res;
+                if(resObj.success){
+                    const novelData=resObj.data.recommendation;
+                    dispatch({
+                        type: type.getRecommendation,
+                        novelData
+                    })
+                }else{
+                    toast.toastShort(resObj.msg);
+                }
+            })
+            .catch(function(err) {
+                toast.toastShort('无网络')
+            })
+    }
+};
+
 
 
 
