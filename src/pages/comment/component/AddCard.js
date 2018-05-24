@@ -30,7 +30,7 @@ class AddCard extends Component{
                            uid:this.props.user.userId,
                            userName:this.props.user.userName,
                            comment:this.state.word,
-                           score:parseInt(this.state.star)*2,
+                           score:parseInt(this.state.star)
                            updateTime:dateFormat(new Date(),'yyyy-mm-dd HH:MM:ss')
                    };
                    this.props.clearNovelComments();
