@@ -53,7 +53,7 @@ import toast from '../../util/toast';
                                  <Button
                                      style={styles.button}
                                      onPress={this.addInterest}>
-                                     添加到书架
+                                     收藏
                                  </Button>
                              </View>
                          </View>
