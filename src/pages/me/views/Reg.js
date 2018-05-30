@@ -20,14 +20,18 @@ class Reg extends Component{
     }
     registered=()=>{
         const { registered,user}=this.props;
-        if(user.password===user.passwordTwo){
-            if(user.userName&&user.testCode&&user.password){
-                registered(user);
+        if(user.userName&&user.testCode&&user.password){
+            if(user.password===user.passwordTwo){
+                if(user.password.length<6){
+                    registered(user);
+                }else {
+                    toast.toastShort('密码不能短于6个字符');
+                }
             }else {
-                toast.toastShort('不能为空');
+                toast.toastShort('两次输入的密码不一致');
             }
         }else{
-            toast.toastShort('输入的密码不一致')
+            toast.toastShort('不能为空');
         }
         this.refs.userName.clear();
         this.refs.password.clear();
@@ -71,7 +75,7 @@ class Reg extends Component{
                         ref={'password'}
                         style={styles.textInput}
                         placeholder={'请输入密码'}
-                        maxLength={10}
+                        maxLength={12}
                         secureTextEntry={true}
                         underlineColorAndroid='transparent'
                         onChangeText={this.handleChangePassword}
@@ -83,7 +87,7 @@ class Reg extends Component{
                         ref={'passwordTwo'}
                         style={styles.textInput}
                         placeholder={'请再次输入密码'}
-                        maxLength={10}
+                        maxLength={12}
                         secureTextEntry={true}
                         underlineColorAndroid='transparent'
                         onChangeText={this.handleChangePasswordTwo}
