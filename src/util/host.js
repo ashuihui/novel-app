@@ -1,8 +1,8 @@
 
-
+import config from '../config';
 
 const host ={
-    hostPort:'http://118.89.32.47:7280',
+    hostPort:config.domain,
     totalRankHost:function (num) {
         let me = this;
         return `${me.hostPort}/rank/total?num=${num}`;

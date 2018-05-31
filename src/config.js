@@ -1,3 +1,21 @@
+
+
+
+const config = {
+    domain: 'http://api.ashuihouse.cn:7280',
+};
+export default config;
+
+
+
+
+
+
+
+
+
+
+
 /*
 src:项目主要的代码资源
      common：各个页面共用的一些组件资源
