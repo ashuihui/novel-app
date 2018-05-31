@@ -22,7 +22,7 @@ class Reg extends Component{
         const { registered,user}=this.props;
         if(user.userName&&user.testCode&&user.password){
             if(user.password===user.passwordTwo){
-                if(user.password.length<6){
+                if(user.password.length>6){
                     registered(user);
                 }else {
                     toast.toastShort('密码不能短于6个字符');
