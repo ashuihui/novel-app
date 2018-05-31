@@ -4,7 +4,7 @@ import { Button,TextInput, View } from 'react-native';
 import styles from "../styles/login";
 import color from '../../../common/styles/color';
 import { connect } from 'react-redux'
-import {login} from "../../../redux/action";
+import {fetchBookShelf, login} from "../../../redux/action";
 
 class Login extends Component{
     componentWillReceiveProps (nextProps) {
@@ -14,10 +14,13 @@ class Login extends Component{
         }
     }
     login=()=>{
-        const { login,user}=this.props;
+        const { login,user,fetchBookShelf}=this.props;
         this.refs.userName.clear();
         this.refs.password.clear();
         login(user);
+        setTimeout(()=>{
+            fetchBookShelf(user.token)
+        },2000)
     }
     handleChangeName=(name)=>{
         const { user}=this.props;
@@ -71,4 +74,5 @@ const mapStateToProps = state => ({
 });
 export default connect(mapStateToProps, {
     login,
+    fetchBookShelf,
 })(Login)
